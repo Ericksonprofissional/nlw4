@@ -13,3 +13,8 @@ export function nomeFuncao (){
     </div>
     );
 }
+
+
+3 - Contexto e componentes
+
+Na terceiro aula realizaremos uma separação da aplicação em componentes menores e aplicaremos o conceito de contextos no React, responsável por compartilhar uma informação entre vários componentes em tela. Finalizaremos também a funcionalidade de desafios.
