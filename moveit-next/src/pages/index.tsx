@@ -4,6 +4,7 @@ import { CompleteedChallenges } from "../components/CompletedChallenges";
 import { CountDown } from "../components/CountDown";
 import { ExperienceBar } from "../components/experienceBar";
 import { Profiler } from "../components/profile";
+import { CountDownProvider } from "../contexts/CountDownContext";
 
 import styles from  '../style/pages/Home.module.css';
 
@@ -14,6 +15,7 @@ export default function Home() {
         <title>Inicio | Moveit</title>
       </Head>     
       <ExperienceBar />
+      <CountDownProvider>
       <section>
         <div>
           <Profiler />
@@ -24,6 +26,7 @@ export default function Home() {
           <ChallengeBox />
         </div>
       </section>
+      </CountDownProvider>
     </div>
   )
 }

@@ -1,45 +1,21 @@
 import { useState, useEffect, useContext } from 'react';
-import { ChallengesContext } from '../contexts/ChallengesContext';
+import { CountDownContext, CountDownProvider } from '../contexts/CountDownContext';
 import styles from '../style/components/CountDown.module.css';
 
 export function CountDown() {
-    let countDownTimeOut: NodeJS.Timeout;
-
 
     const {
-        startNewChallenge
-    } = useContext(ChallengesContext);
-
-
-    const [time, setTime] = useState(0.1 * 60);
-    const [isActive, setIsActie] = useState(false);
-    const [hasFinish, setHasFinish] = useState(false);
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
+        minutes,
+        seconds,
+        hasFinish,
+        isActive,
+        startCountDown,
+        resetCountDown
+    } = useContext(CountDownContext)    
 
     const [minutoLeft, minutoRight] = String(minutes).padStart(2, '0').split('')
     const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('')
-    function startCountDown(){
-        setIsActie(true)       
-    }
-    function resetCountDown(){
-        clearTimeout(countDownTimeOut);
-        setIsActie(false); 
-        setTime(0.1 * 60)
-    }
-
-    useEffect(()=>{
-        if(isActive && time > 0){
-            countDownTimeOut = setTimeout(()=>{
-                setTime(time -1)
-            },1000)
-        }else if (isActive && time == 0){
-            setHasFinish(true);
-            setIsActie(false);
-            startNewChallenge();
-        }
-    }, [isActive, time]);
-   
+    
 //#jornadainfinita
     return (
     <div>
